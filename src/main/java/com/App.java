@@ -26,10 +26,10 @@ import java.io.IOException;
 @EnableTransactionManagement
 public class App {
 
-    @Bean
-    public Runnable getRunnable (){
-        return ()-> System.out.println("hah");
-    }
+//    @Bean
+//    public Runnable getRunnable (){
+//        return ()-> System.out.println("hah");
+//    }
 
     @Bean
     @Conditional(JBKCondition.class)

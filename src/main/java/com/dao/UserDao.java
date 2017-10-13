@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,6 +28,12 @@ public class UserDao {
                 }*/
                 System.out.println(names[i]);
             }
+    }
 
+    public String addUser(String name){
+        if(StringUtils.isEmpty(name)){
+            return null;
+        }
+        return "1";
     }
 }
