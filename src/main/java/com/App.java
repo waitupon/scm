@@ -1,8 +1,10 @@
 package com;
 
 import com.bean.Apple;
+import com.bean.Product;
 import com.bean.User;
 import com.condition.JBKCondition;
+import com.dao.ProductDao;
 import com.dao.UserDao;
 import com.event.MyAppEvent;
 import com.event.MyAppListener;
@@ -44,7 +46,7 @@ public class App {
         System.out.println(ctx.getBean(Apple.class));
         ctx.getBean(Runnable.class).run();
         ctx.publishEvent(new MyAppEvent(new Object()));*/
-        ctx.getBean(UserDao.class).add("aaa","bbb","ccc");
-
+//        ProductDao productDao = ctx.getBean(ProductDao.class);
+//        productDao.insert(new Product("p1","哈哈"));
     }
 }
