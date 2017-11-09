@@ -24,7 +24,6 @@ public class LogAspect {
 
     @After("execution(* com.dao..*.*(..))")
     public void showInfo(JoinPoint point){
-        System.out.println("log end");
         System.out.println("class=" + point.getTarget().getClass() + "  args=" + Arrays.asList(point.getArgs()) + " method=" + point.getSignature().getName());
     }
 }

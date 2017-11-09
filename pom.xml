@@ -93,6 +93,15 @@
 
 
         <dependency>
+                   <groupId>baiwang</groupId>
+                   <artifactId>api</artifactId>
+                   <version>1.2.1</version>
+                  <scope>system</scope>
+                  <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/baiwang-bopsdk-1.2.1.jar</systemPath>
+         </dependency>
+
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
