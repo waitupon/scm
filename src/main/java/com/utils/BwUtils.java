@@ -23,23 +23,33 @@ import javax.swing.plaf.PanelUI;
 public class BwUtils{
     private static final Logger log = LoggerFactory.getLogger(BwUtils.class);
 
-    @Value("${bw.app.key}")
-    private String appKey = "10000030";
-    @Value("${bw.app.secret}")
-    private String appSecret = "acae6f3a-0da6-4512-b788-4550a687a412";
-    @Value("${bw.token}")
-    private String token="c8fe1407-a8bc-4d8b-a2f4-07084bf64009s";
-    @Value("${bw.user.salt}")
-    private String userSalt="db98a6c4b317476b958a2bf610bc26b4";
+    private static boolean debug = false;
+    private static String appKey = "10000030";
 
-    //String url = "http://60.205.83.27/router/rest";
-   String url = "http://openapi.baiwang.com/router/rest";
-    String username = "admin_1800000021168";
-    String password = "123456";
+    private static String appSecret = "acae6f3a-0da6-4512-b788-4550a687a412";
+
+    private static String userSalt="db98a6c4b317476b958a2bf610bc26b4";
+
+
+    static String url = "http://openapi.baiwang.com/router/rest";
+    static String  username = "zhangtuo@baiwang.com";
+    static String  password = "qwe123456";
 
     String taxNo = "91500000747150532A";
 
-    public String getTokenBySecret(){
+
+    static{
+        if(debug){
+            appKey = "10000005";
+            appSecret = "b65025d0-19d2-4841-88f4-ff4439b8da58";
+            userSalt="94db610c5c3049df8da3e9ac91390015";
+            url = "http://60.205.83.27/router/rest";
+            username = "admin_1800000021168";
+            password = "123456";
+        }
+    }
+
+    public static String getTokenBySecret(){
         String token = null;
         ILoginClient loginClient = new PostLogin(url);
         LoginRequest loginRequest = new LoginRequest();
@@ -55,10 +65,10 @@ public class BwUtils{
     }
 
 
-    public  void companySearch(){
+    public static void companySearch(){
         IBopClient client = new BopRestClient(url, appKey, appSecret);
         CompanySearchRequest request = new CompanySearchRequest();
-        request.setCompanyName("北京美世珠漆业有限公司");//沙箱环境只能获取“百望股份”相关信息
+        request.setCompanyName("深圳市金利洋科技有限公司");//沙箱环境只能获取“百望股份”相关信息
         request.setAccuracy("TRUE");
         request.setSort("{\"frequency\": 0}");
        // request.setTaxId("110108339805094");
@@ -74,6 +84,28 @@ public class BwUtils{
         {
             log.info("error");
         }
+    }
+
+
+    public static CompanySearchResponse companySearch(String companyName){
+        IBopClient client = new BopRestClient(url, appKey, appSecret);
+        CompanySearchRequest request = new CompanySearchRequest();
+        request.setCompanyName(companyName);//沙箱环境只能获取“百望股份”相关信息
+        request.setAccuracy("TRUE");
+        request.setSort("{\"frequency\": 0}");
+        // request.setTaxId("110108339805094");
+        request.setAppId("str");
+        String token = getTokenBySecret();
+        try
+        {
+            CompanySearchResponse response = client.execute(request, token, CompanySearchResponse.class);
+            return response;
+        }
+        catch ( BopException e)
+        {
+            log.info("error");
+        }
+        return null;
     }
 
 
@@ -119,8 +151,7 @@ public class BwUtils{
     }
 
     public static void main(String[] args) {
-        BwUtils utils = new BwUtils();
-        utils.companySearch();
+
     }
 
 
