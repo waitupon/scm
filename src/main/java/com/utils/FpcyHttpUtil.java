@@ -134,10 +134,10 @@ public class FpcyHttpUtil {
 	}
 
 	public static void main(String[] args) {
-        String fpcy = FpcyHttpUtil.fpcy("http://127.0.0.1:8805", "3100172130", "37438347", "2017-10-17", "910.68");
-//		String count = FpcyHttpUtil.count("http://127.0.0.1:8805");
-//        System.out.println(count);
-        System.out.println(fpcy);
+      //  String fpcy = FpcyHttpUtil.fpcy("http://127.0.0.1:8805", "3100172130", "37438347", "2017-10-17", "910.68");
+		String count = FpcyHttpUtil.count("http://127.0.0.1:8805");
+//        System.out.println(count);count
+        System.out.println(count);
 
     }
 }
