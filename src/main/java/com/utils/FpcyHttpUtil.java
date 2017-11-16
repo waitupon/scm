@@ -1,11 +1,8 @@
 package com.utils;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import sun.net.www.http.HttpClient;
+
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -133,11 +130,16 @@ public class FpcyHttpUtil {
 		return "";
 	}
 
-	public static void main(String[] args) {
-      //  String fpcy = FpcyHttpUtil.fpcy("http://127.0.0.1:8805", "3100172130", "37438347", "2017-10-17", "910.68");
-		String count = FpcyHttpUtil.count("http://127.0.0.1:8805");
-//        System.out.println(count);count
+	public static void main(String[] args) throws Exception {
+     	/*String fpcy = FpcyHttpUtil.fpcy("http://127.0.0.1:8805", "3100172130", "37438347", "2017-10-17", "910.68");
+		System.out.println(fpcy);*/
+		/*String count = FpcyHttpUtil.count("http://127.0.0.1:8805");
         System.out.println(count);
+*/
 
-    }
+        String url = "http://fpcyweb.tax.sh.gov.cn:1001/WebQuery/query?fpdm=3100172130&fphm=37438347&kprq=20171017&fpje=910.68&fplx=01&yzm=5&yzmSj=2017-11-15+11%3A14%3A34&index=397c2f0129c694a7bdcaa2b422c4ac8f&iv=dc0389c324e2526bf208434d80d93ca0&salt=7c15e9bf1c0cc39451e4c437eac5ea9d";
+		ResponseContent urlRespContent = HttpHelper.getUrlRespContent(url);
+		System.out.println(urlRespContent.getContent());
+
+	}
 }
