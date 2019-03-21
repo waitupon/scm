@@ -1,7 +1,10 @@
 package test;
 
 import com.bean.Apple;
+import com.bean.Product;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,6 +15,15 @@ import java.util.Set;
  * Created by Administrator on 2017/9/29 0029.
  */
 public class SpringTest {
+
+
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean.xml");
+        Product product = (Product) applicationContext.getBean("product");
+
+        product.say();
+
+    }
 
     @Test
     public void test(){
